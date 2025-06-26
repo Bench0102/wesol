@@ -1,0 +1,2098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wesol Media | Creative Media Brand</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            scroll-behavior: smooth;
+        }
+        /* For headings */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .logo-text {
+            font-weight: 700;
+            letter-spacing: 2px;
+            position: relative;
+        }
+        
+        .logo-text::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #3b82f6;
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #14b8a6, #0d9488);
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Enhanced Navigation Animations */
+        .nav-hidden {
+            transform: translateY(-100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-visible {
+            transform: translateY(0);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hero-section {
+            height: 100vh;
+        }
+
+        /* Enhanced Service Card Animations */
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .service-card:hover::before {
+            left: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+        
+        .service-icon {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Enhanced Portfolio Item Animations */
+        .portfolio-item {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .portfolio-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(20, 184, 166, 0.8), rgba(13, 148, 136, 0.8));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .portfolio-item:hover::after {
+            opacity: 1;
+        }
+        
+        .portfolio-item:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .portfolio-overlay {
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(20px);
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Enhanced Testimonial Card Animations */
+        .testimonial-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.1), rgba(13, 148, 136, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: inherit;
+        }
+        
+        .testimonial-card:hover::before {
+            opacity: 1;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(20, 184, 166, 0.2);
+        }
+        
+        /* Enhanced FAQ Accordion Animations */
+        .accordion {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .accordion:hover {
+            background-color: rgba(251, 207, 232, 0.3);
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+        }
+        
+        .accordion.active .accordion-content {
+            max-height: 300px;
+            opacity: 1;
+            padding-top: 1rem !important;
+            padding-bottom: 2rem !important;
+        }
+        
+        .accordion-icon {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .accordion.active .accordion-icon {
+            transform: rotate(45deg);
+        }
+        
+        /* Enhanced Modal Animations */
+        .modal {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.9);
+        }
+        
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+        
+        /* Enhanced Social Media Card Animations */
+        .social-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .social-card:hover::before {
+            left: 100%;
+        }
+        
+        .social-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .social-icon {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .social-card:hover .social-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+        
+        /* Enhanced Button Animations */
+        .btn-animated {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .btn-animated::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .btn-animated:hover::before {
+            left: 100%;
+        }
+        
+        .btn-animated:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Enhanced Fade-in Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .fade-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .fade-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        /* Floating Animation */
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* Pulse Animation */
+        .pulse-slow {
+            animation: pulse-slow 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-slow {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        /* Gradient Animation */
+        .gradient-animate {
+            background-size: 200% 200%;
+            animation: gradient 3s ease infinite;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Stagger Animation for Lists */
+        .stagger-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .stagger-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Enhanced Loading States */
+        .loading-shimmer {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        /* Parallax Effect */
+        .parallax {
+            transform: translateZ(0);
+            transition: transform 0.1s ease-out;
+        }
+        
+        /* Enhanced Hover Effects for Images */
+        .image-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+        
+        .image-hover img {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .image-hover:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Text Animation */
+        .text-reveal {
+            overflow: hidden;
+        }
+        
+        .text-reveal span {
+            display: inline-block;
+            transform: translateY(100%);
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .text-reveal.visible span {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                 <!-- Logo with high-end serif font -->
+                <a href="#" class="text-2xl font-bold text-black font-serif tracking-tight">
+                    WESOL <span class="text-teal-600 text-">media.</span>
+                </a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-teal-600 font-serif">Home</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-teal-600 font-serif">About</a>
+                    <a href="#services" class="nav-link text-gray-700 hover:text-teal-600 font-serif">Services</a>
+                    <a href="#portfolio" class="nav-link text-gray-700 hover:text-teal-600 font-serif">Portfolio</a>
+                    <a href="#testimonials" class="nav-link text-gray-700 hover:text-teal-600 font-serif">Testimonials</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-teal-600 font-serif">Contact</a>
+                </div>
+                <button class="md:hidden focus:outline-none" id="menu-btn">
+                    <i class="fas fa-bars text-2xl text-teal-800"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-white w-full px-6 py-4" id="mobile-menu">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="text-gray-700 hover:text-teal-600">Home</a>
+                <a href="#about" class="text-gray-700 hover:text-teal-600">About</a>
+                <a href="#services" class="text-gray-700 hover:text-teal-600">Services</a>
+                <a href="#portfolio" class="text-gray-700 hover:text-teal-600">Portfolio</a>
+                <a href="#testimonials" class="text-gray-700 hover:text-teal-600">Testimonials</a>
+                <a href="#contact" class="text-gray-700 hover:text-teal-600">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+        <!-- Hero Section -->
+        <section id="home" class="hero flex items-center justify-center pt-20 relative">
+            <div class="container mx-auto px-6 h-screen flex items-center">
+                <!-- Background Images with Borders -->
+                <div class="absolute inset-0 flex">
+                    <!-- Left Image -->
+                    <div class="w-1/2 h-full relative">
+                        <div class="absolute inset-4 border-4 border-white rounded-lg overflow-hidden">
+                            <img src="Images/owner.jpg" alt="Creative Professional" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    
+                    <!-- Right Image -->
+                    <div class="w-1/2 h-full relative">
+                        <div class="absolute inset-4 border-4 border-white rounded-lg overflow-hidden">
+                            <img src="Images/pic1.jpg" alt="Workspace" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+                
+                         <!-- Centered Text Content Overlay -->
+            <div class="relative z-10 flex flex-col items-center justify-center w-full h-full">
+                <!-- Overlapping Text Blocks like Scotch Tape -->
+                <div class="relative">
+                    <!-- SOCIALS - Top layer -->
+                    <div class="bg-white text-gray-800 px-12 text-center py-6 shadow-xl transform rotate-2 relative z-30">
+                        <h1 class="text-5xl md:text-6xl font-bold tracking-wider">SOCIALS</h1>
+                    </div>
+                    
+                    <!-- MADE - Middle layer, overlapping -->
+                    <div class="bg-teal-400 text-white text-center px-6 py-6 shadow-xl transform -rotate-1 relative z-20 -mt-4 ml-8">
+                        <h2 class="text-4xl md:text-5xl font-handwriting font-bold italic">made</h2>
+                    </div>
+                    
+                    <!-- SIMPLE - Bottom layer, overlapping -->
+                    <div class="bg-gray-800 text-white text-center px-12 py-6 shadow-xl transform rotate-1 relative z-10 -mt-4 ml-4">
+                        <h3 class="text-5xl md:text-6xl font-bold tracking-wider">SIMPLE</h3>
+                    </div>
+                </div>
+                
+                <!-- Call to Action Button - Below the overlapping text -->
+                <div class="mt-12">
+                    <a href="#about" class="inline-block bg-white text-gray-800 px-10 py-4 shadow-xl font-bold text-xl hover:bg-gray-100 transition duration-300 transform hover:scale-105">
+                        START HERE
+                    </a>
+                </div>
+            </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-20 bg-gradient-to-br from-teal-400 via-teal-500 to-cyan-500 relative overflow-hidden">
+            <!-- Decorative Background Elements -->
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-xl"></div>
+                <div class="absolute bottom-20 right-20 w-48 h-48 bg-white rounded-full blur-2xl"></div>
+                <div class="absolute top-1/2 left-1/4 w-24 h-24 bg-white rounded-full blur-lg"></div>
+            </div>
+            
+            <div class="container mx-auto px-6 relative z-10">
+                <!-- What's My Story Header - Above Image -->
+                <div class="mb-8 relative">
+                    <div class="bg-white px-12 py-6 shadow-2xl transform -rotate-2 inline-block rounded-lg border-4 border-white hover:rotate-0 transition-transform duration-500 ease-in-out">
+                        <h2 class="text-4xl md:text-6xl font-bold text-black tracking-tight">
+                            what's <span class="text-teal-500 drop-shadow-sm">my</span> <span class="italic font-light">story?</span>
+                        </h2>
+                    </div>
+                </div>
+                
+                <!-- Main Image Container with Text Box Positioned -->
+                <div class="relative flex justify-center mb-16">
+                    <div class="relative group">
+                        <!-- Larger Image -->
+                        <div class="transform hover:scale-105 transition-all duration-500 ease-in-out">
+                            <img src="Images/06-26-2025_X-Design.png" alt="Main Portrait with Polaroids" class="w-auto h-auto max-w-full max-h-[600px] object-cover rounded-lg">
+                        </div>
+                        
+                        <!-- Story Text Box - Positioned at bottom right of image -->
+                        <div class="absolute -bottom-12 -right-32 max-w-md">
+                            <div class="bg-gradient-to-r from-gray-900 to-black text-white p-6 shadow-2xl transform rotate-1 hover:rotate-0 transition-transform duration-500 ease-in-out rounded-xl border-l-4 border-teal-400">
+                                <p class="text-sm leading-relaxed font-light">
+                                    Hi, I'm <span class="font-bold text-white">Mia</span> — <span class="text-teal-300 font-bold">social media strategist</span>, content creator, and your go-to girl for all things digital. What started as a side hustle turned into my full-time dream, helping women-led brands grow with confidence, clarity, and a little ✨ <span class="italic font-medium">sparkle</span>.
+                                </p>
+                                <!-- Decorative quote marks -->
+                                <div class="absolute -top-2 -left-2 text-3xl text-teal-300 opacity-50 font-serif">"</div>
+                                <div class="absolute -bottom-2 -right-2 text-3xl text-teal-300 opacity-50 font-serif transform rotate-180">"</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Floating elements around the image -->
+                        <div class="absolute -top-8 -left-8 w-6 h-6 bg-white rounded-full shadow-lg animate-bounce" style="animation-delay: 0.5s;"></div>
+                        <div class="absolute -bottom-8 -right-8 w-4 h-4 bg-white rounded-full shadow-lg animate-bounce" style="animation-delay: 1s;"></div>
+                        <div class="absolute top-1/2 -right-12 w-5 h-5 bg-white rounded-full shadow-lg animate-bounce" style="animation-delay: 1.5s;"></div>
+                    </div>
+                </div>
+                
+                <!-- Follow Me Sticker -->
+                <div class="flex justify-center">
+                    <div class="bg-white border-4 border-white px-10 py-6 shadow-2xl transform rotate-3 hover:-rotate-1 transition-all duration-300 ease-in-out rounded-full hover:scale-110 cursor-pointer">
+                        <a href="#contact" class="text-2xl md:text-3xl font-bold text-black italic hover:text-teal-600 transition duration-300 flex items-center gap-2">
+                            follow me <span class="text-teal-500">@yourmia</span>
+                            <i class="fas fa-heart text-pink-500 animate-pulse"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Additional decorative elements -->
+                <div class="absolute top-20 right-10 opacity-20">
+                    <i class="fas fa-star text-white text-4xl animate-spin" style="animation-duration: 8s;"></i>
+                </div>
+                <div class="absolute bottom-32 left-16 opacity-20">
+                    <i class="fas fa-heart text-white text-3xl animate-pulse"></i>
+                </div>
+            </div>
+            
+            <!-- Enhanced Mobile Responsive Styles -->
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+                
+                .font-handwriting {
+                    font-family: 'Kalam', cursive;
+                }
+                
+                .font-serif {
+                    font-family: 'Playfair Display', serif;
+                }
+                
+                /* Custom animations */
+                @keyframes float {
+                    0%, 100% { transform: translateY(0px); }
+                    50% { transform: translateY(-10px); }
+                }
+                
+                .animate-float {
+                    animation: float 3s ease-in-out infinite;
+                }
+                
+                /* Hover effects */
+                #about .group:hover .absolute {
+                    animation-play-state: paused;
+                }
+                
+                @media (max-width: 768px) {
+                    #about h2 {
+                        text-align: center;
+                        font-size: 2.5rem !important;
+                    }
+                    
+                    #about .container {
+                        padding: 1rem;
+                    }
+                    
+                    #about .max-w-3xl {
+                        max-width: 100% !important;
+                        margin: 0 1rem;
+                    }
+                    
+                    #about .text-xl {
+                        font-size: 1.1rem !important;
+                    }
+                    
+                    #about .transform {
+                        transform: rotate(0deg) !important;
+                    }
+                    
+                    #about .absolute {
+                        display: none;
+                    }
+                }
+                
+                @media (max-width: 480px) {
+                    #about .px-12 {
+                        padding-left: 1.5rem !important;
+                        padding-right: 1.5rem !important;
+                    }
+                    
+                    #about .py-6 {
+                        padding-top: 1rem !important;
+                        padding-bottom: 1rem !important;
+                    }
+                }
+            </style>
+        </section>
+
+      <!-- Services Section -->
+      <section id="services" class="py-20 bg-white relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <!-- Main Title -->
+            <div class="mb-16">
+                <div class="inline-block bg-teal-400 text-black px-8 py-3 transform -rotate-2 shadow-lg">
+                    <h2 class="text-2xl md:text-3xl font-bold italic">Our Services</h2>
+                </div>
+            </div>
+            
+            <!-- Services Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Content Creation -->
+                <div class="bg-gray-200 p-6 transform -rotate-3 shadow-xl hover:rotate-0 hover:scale-105 transition-all duration-300 group">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="bg-teal-400 text-black p-2 rounded-full group-hover:rotate-12 transition-transform duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+                            </svg>
+                        </div>
+                        <div class="bg-teal-400 text-black px-4 py-2 inline-block transform -rotate-1">
+                            <h3 class="text-xl font-bold italic">content creation</h3>
+                        </div>
+                    </div>
+                    <div class="text-black space-y-2 text-sm font-medium leading-relaxed">
+                        <p class="text-base font-semibold">✨ Custom graphics & captions</p>
+                        <p class="text-base font-semibold">🎨 Brand-aligned visuals</p>
+                        <p class="text-base font-semibold">📱 Ready-to-post content</p>
+                        <p class="text-xs text-gray-600 mt-3 italic">"Your brand's personality, perfectly captured"</p>
+                    </div>
+                </div>
+                
+                <!-- Social Media Strategy -->
+                <div class="bg-gray-200 p-6 transform rotate-2 shadow-xl hover:rotate-0 hover:scale-105 transition-all duration-300 group">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="bg-teal-400 text-black p-2 rounded-full group-hover:rotate-12 transition-transform duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 11H7v9h2v-9zm4 0h-2v9h2v-9zm4 0h-2v9h2v-9zm2.5-5H20V4h-1.5l-1-1h-5l-1 1H10V4H8.5v2H7v2h12.5V6z"/>
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <div class="bg-teal-400 text-black px-4 py-2 inline-block transform rotate-1">
+                            <h3 class="text-xl font-bold italic">social media strategy</h3>
+                        </div>
+                    </div>
+                    <div class="text-black space-y-2 text-sm font-medium leading-relaxed">
+                        <p class="text-base font-semibold">📊 Data-driven roadmap</p>
+                        <p class="text-base font-semibold">🎯 Target audience insights</p>
+                        <p class="text-base font-semibold">📈 Growth-focused planning</p>
+                        <p class="text-xs text-gray-600 mt-3 italic">"Know exactly what to post & why"</p>
+                    </div>
+                </div>
+                
+                <!-- Content Calendar -->
+                <div class="bg-gray-700 p-6 transform -rotate-1 shadow-xl hover:rotate-0 hover:scale-105 transition-all duration-300 group">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="bg-teal-400 text-black p-2 rounded-full group-hover:rotate-12 transition-transform duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                            </svg>
+                        </div>
+                        <div class="bg-gray-600 text-white px-4 py-2 inline-block transform rotate-2">
+                            <h3 class="text-xl font-bold italic">content calendar</h3>
+                        </div>
+                    </div>
+                    <div class="text-white space-y-2 text-sm font-medium leading-relaxed">
+                        <p class="text-base font-semibold">📅 30-day post schedule</p>
+                        <p class="text-base font-semibold">⏰ Optimal timing strategy</p>
+                        <p class="text-base font-semibold">🚀 Consistent posting flow</p>
+                        <p class="text-xs text-gray-300 mt-3 italic">"Stress less, post more, grow faster"</p>
+                    </div>
+                </div>
+                
+                <!-- Re-branding -->
+                <div class="bg-gray-700 p-6 transform rotate-3 shadow-xl hover:rotate-0 hover:scale-105 transition-all duration-300 group">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="bg-teal-400 text-black p-2 rounded-full group-hover:rotate-12 transition-transform duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <div class="bg-teal-400 text-black px-4 py-2 inline-block transform -rotate-2">
+                            <h3 class="text-xl font-bold italic">re-branding</h3>
+                        </div>
+                    </div>
+                    <div class="text-white space-y-2 text-sm font-medium leading-relaxed">
+                        <p class="text-base font-semibold">✨ Cohesive visual identity</p>
+                        <p class="text-base font-semibold">🎨 Scroll-stopping aesthetics</p>
+                        <p class="text-base font-semibold">💫 Premium brand presence</p>
+                        <p class="text-xs text-gray-300 mt-3 italic">"Transform your feed into art"</p>
+                    </div>
+                </div>
+                
+                <!-- SEO Optimization -->
+                <div class="bg-gray-200 p-6 transform -rotate-2 shadow-xl hover:rotate-0 hover:scale-105 transition-all duration-300 group">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="bg-teal-400 text-black p-2 rounded-full group-hover:rotate-12 transition-transform duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                                <path d="M12 6v3l4-4-4-4v3c-3.31 0-6 2.69-6 6 0 1.01.25 1.97.7 2.8l1.46-1.46c-.24-.54-.16-1.24.22-1.71C8.56 9.29 10.15 8.5 12 6z"/>
+                            </svg>
+                        </div>
+                        <div class="bg-gray-600 text-white px-4 py-2 inline-block transform rotate-1">
+                            <h3 class="text-xl font-bold italic">seo optimization</h3>
+                        </div>
+                    </div>
+                    <div class="text-black space-y-2 text-sm font-medium leading-relaxed">
+                        <p class="text-base font-semibold">🔍 Keyword optimization</p>
+                        <p class="text-base font-semibold">📍 Local search visibility</p>
+                        <p class="text-base font-semibold">🎯 Dream client discovery</p>
+                        <p class="text-xs text-gray-600 mt-3 italic">"Be found, not buried in the feed"</p>
+                    </div>
+                </div>
+                
+                <!-- Insta Management -->
+                <div class="bg-teal-400 p-6 transform rotate-1 shadow-xl hover:rotate-0 hover:scale-105 transition-all duration-300 group">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="bg-gray-700 text-white p-2 rounded-full group-hover:rotate-12 transition-transform duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </div>
+                        <div class="bg-gray-700 text-white px-4 py-2 inline-block transform -rotate-1">
+                            <h3 class="text-xl font-bold italic">insta management</h3>
+                        </div>
+                    </div>
+                    <div class="text-black space-y-2 text-sm font-medium leading-relaxed">
+                        <p class="text-base font-semibold">📱 Daily posting & engagement</p>
+                        <p class="text-base font-semibold">💬 Community management</p>
+                        <p class="text-base font-semibold">📊 Growth tracking & analytics</p>
+                        <p class="text-xs text-gray-700 mt-3 italic">"Hands-off growth, like magic"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Background decorative elements -->
+        <div class="absolute top-10 left-10 w-4 h-4 bg-teal-400 rounded-full opacity-50"></div>
+        <div class="absolute top-32 right-20 w-6 h-6 bg-gray-600 rounded-full opacity-30"></div>
+        <div class="absolute bottom-20 left-1/4 w-3 h-3 bg-teal-400 rounded-full opacity-40"></div>
+        <div class="absolute bottom-40 right-10 w-5 h-5 bg-gray-500 rounded-full opacity-20"></div>
+    </section>
+
+        <!-- Process Section -->
+        <section class="py-16 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+            <!-- Background decorative elements -->
+            <div class="absolute top-20 left-10 w-32 h-32 bg-teal-400 rounded-full opacity-10 blur-3xl"></div>
+            <div class="absolute bottom-20 right-10 w-40 h-40 bg-gray-300 rounded-full opacity-10 blur-3xl"></div>
+            
+            <div class="w-full relative z-10">
+                <!-- Section Header -->
+                <div class="text-center mb-16 px-6">
+                    <div class="inline-block bg-gradient-to-r from-teal-400 to-teal-500 text-white px-8 py-3 transform -rotate-1 shadow-xl mb-6 rounded-lg">
+                        <h2 class="text-2xl md:text-3xl font-bold">Our Proven Process</h2>
+                    </div>
+                    <p class="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">From consultation to measurable growth, we make social media success simple and stress-free with our data-driven approach</p>
+                </div>
+                
+                <!-- Process Steps Container -->
+                <div class="max-w-7xl mx-auto px-6">
+                    <!-- Step 1: Book a Consultation -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 mb-8 bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+                        <div class="bg-gradient-to-br from-teal-400 to-teal-500 p-8 lg:p-10 relative overflow-hidden flex items-center">
+                            <!-- Enhanced decorative elements -->
+                            <div class="absolute top-6 right-6 w-16 h-16 bg-white bg-opacity-20 rounded-full"></div>
+                            <div class="absolute bottom-6 left-6 w-8 h-8 bg-black bg-opacity-10 rounded-full"></div>
+                            <div class="absolute top-1/2 right-0 w-4 h-20 bg-white bg-opacity-10 rounded-l-full"></div>
+                            
+                            <div class="relative z-10 w-full">
+                                <div class="flex items-center gap-3 mb-6">
+                                    <div class="bg-black text-white px-4 py-2 rounded-full transform -rotate-2 shadow-lg">
+                                        <span class="text-sm font-bold">STEP 1</span>
+                                    </div>
+                                    <div class="w-12 h-1 bg-black bg-opacity-30 rounded-full"></div>
+                                </div>
+                                
+                                <div class="bg-white text-black px-6 py-3 inline-block mb-8 transform rotate-1 rounded-xl shadow-lg">
+                                    <h3 class="text-xl lg:text-2xl font-bold flex items-center gap-3">
+                                        📞 Book a Consultation
+                                    </h3>
+                                </div>
+                                
+                                <div class="text-black space-y-3 text-base leading-relaxed">
+                                    <div class="flex items-start gap-3">
+                                        <div class="w-2 h-2 bg-black rounded-full mt-2 flex-shrink-0"></div>
+                                        <p class="font-semibold">Schedule your <span class="bg-white bg-opacity-70 px-2 py-1 rounded-md text-sm font-bold">FREE</span> 30-minute strategy call</p>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <div class="w-2 h-2 bg-black rounded-full mt-2 flex-shrink-0"></div>
+                                        <p class="font-semibold">Discuss your business goals, challenges & vision</p>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <div class="w-2 h-2 bg-black rounded-full mt-2 flex-shrink-0"></div>
+                                        <p class="font-semibold">Get expert insights on your current social presence</p>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <div class="w-2 h-2 bg-black rounded-full mt-2 flex-shrink-0"></div>
+                                        <p class="font-semibold">Ask questions & see if we're the perfect fit</p>
+                                    </div>
+                                    
+                                    <div class="mt-6 p-4 bg-black bg-opacity-15 rounded-xl border-l-4 border-black">
+                                        <p class="text-sm italic font-medium">💡 "No pressure, just pure value and actionable advice"</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="relative group">
+                            <div class="h-full min-h-[400px] overflow-hidden">
+                                <img src="Images/pic1.jpg" alt="Consultation" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+                                <div class="absolute bottom-6 left-6 bg-white bg-opacity-95 px-4 py-2 rounded-xl shadow-lg">
+                                    <p class="text-sm font-bold text-gray-800">Free Strategy Session</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2: Create a Plan -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 mb-8 bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+                        <div class="relative group">
+                            <div class="h-full min-h-[400px] overflow-hidden">
+                                <img src="Images/pic2.jpg" alt="Planning" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+                                <div class="absolute bottom-6 left-6 bg-white bg-opacity-95 px-4 py-2 rounded-xl shadow-lg">
+                                    <p class="text-sm font-bold text-gray-800">Custom Strategy Plan</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-teal-400 to-teal-500 p-8 lg:p-10 relative overflow-hidden flex items-center">
+                            <!-- Enhanced decorative elements -->
+                            <div class="absolute top-6 left-6 w-16 h-16 bg-white bg-opacity-20 rounded-full"></div>
+                            <div class="absolute bottom-6 right-6 w-8 h-8 bg-black bg-opacity-10 rounded-full"></div>
+                            <div class="absolute top-1/2 left-0 w-4 h-20 bg-white bg-opacity-10 rounded-r-full"></div>
+                            
+                            <div class="relative z-10 w-full">
+                                <div class="flex items-center gap-3 mb-6">
+                                    <div class="bg-black text-white px-4 py-2 rounded-full transform -rotate-2 shadow-lg">
+                                        <span class="text-sm font-bold">STEP 2</span>
+                                    </div>
+                                    <div class="w-12 h-1 bg-black bg-opacity-30 rounded-full"></div>
+                                </div>
+                                
+                                <div class="bg-white text-black px-6 py-3 inline-block mb-8 transform rotate-1 rounded-xl shadow-lg">
+                                    <h3 class="text-xl lg:text-2xl font-bold flex items-center gap-3">
+                                        📋 Create a Plan
+                                    </h3>
+                                </div>
+                                
+                                <div class="text-black space-y-3 text-base leading-relaxed">
+                                    <div class="flex items-start gap-3">
+                                        <div class="w-2 h-2 bg-black rounded-full mt-2 flex-shrink-0"></div>
+                                        <p class="font-semibold">Receive a <span class="bg-white bg-opacity-70 px-2 py-1 rounded-md text-sm font-bold">tailored strategy</span> within 48 hours</p>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <div class="w-2 h-2 bg-black rounded-full mt-2 flex-shrink-0"></div>
+                                        <p class="font-semibold">Detailed content calendar & posting schedule</p>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <div class="w-2 h-2 bg-black rounded-full mt-2 flex-shrink-0"></div>
+                                        <p class="font-semibold">Clear pricing & service breakdown</p>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <div class="w-2 h-2 bg-black rounded-full mt-2 flex-shrink-0"></div>
+                                        <p class="font-semibold">Timeline & milestones for your growth</p>
+                                    </div>
+                                    
+                                    <div class="mt-6 p-4 bg-black bg-opacity-15 rounded-xl border-l-4 border-black">
+                                        <p class="text-sm italic font-medium">🎯 "Every strategy is unique, just like your business"</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3: Launch and Grow -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 mb-12 bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+                        <div class="bg-gradient-to-br from-teal-400 to-teal-500 p-8 lg:p-10 relative overflow-hidden flex items-center">
+                            <!-- Enhanced decorative elements -->
+                            <div class="absolute top-6 right-6 w-16 h-16 bg-white bg-opacity-20 rounded-full"></div>
+                            <div class="absolute bottom-6 left-6 w-8 h-8 bg-black bg-opacity-10 rounded-full"></div>
+                            <div class="absolute top-1/2 right-0 w-4 h-20 bg-white bg-opacity-10 rounded-l-full"></div>
+                            
+                            <div class="relative z-10 w-full">
+                                <div class="flex items-center gap-3 mb-6">
+                                    <div class="bg-black text-white px-4 py-2 rounded-full transform -rotate-2 shadow-lg">
+                                        <span class="text-sm font-bold">STEP 3</span>
+                                    </div>
+                                    <div class="w-12 h-1 bg-black bg-opacity-30 rounded-full"></div>
+                                </div>
+                                
+                                <div class="bg-white text-black px-6 py-3 inline-block mb-8 transform rotate-1 rounded-xl shadow-lg">
+                                    <h3 class="text-xl lg:text-2xl font-bold flex items-center gap-3">
+                                        🚀 Launch & Grow
+                                    </h3>
+                                </div>
+                                
+                                <div class="text-black space-y-3 text-base leading-relaxed">
+                                    <div class="flex items-start gap-3">
+                                        <div class="w-2 h-2 bg-black rounded-full mt-2 flex-shrink-0"></div>
+                                        <p class="font-semibold">We handle <span class="bg-white bg-opacity-70 px-2 py-1 rounded-md text-sm font-bold">everything</span> - content, posting & engagement</p>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <div class="w-2 h-2 bg-black rounded-full mt-2 flex-shrink-0"></div>
+                                        <p class="font-semibold">Weekly performance reports & insights</p>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <div class="w-2 h-2 bg-black rounded-full mt-2 flex-shrink-0"></div>
+                                        <p class="font-semibold">Continuous optimization for maximum growth</p>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <div class="w-2 h-2 bg-black rounded-full mt-2 flex-shrink-0"></div>
+                                        <p class="font-semibold">You focus on your business while we grow your presence</p>
+                                    </div>
+                                    
+                                    <div class="mt-6 p-4 bg-black bg-opacity-15 rounded-xl border-l-4 border-black">
+                                        <p class="text-sm italic font-medium">✨ "Sit back, relax, and watch your social media thrive"</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="relative group">
+                            <div class="h-full min-h-[400px] overflow-hidden">
+                                <img src="Images/pic3.jpg" alt="Launch and Grow" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+                                <div class="absolute bottom-6 left-6 bg-white bg-opacity-95 px-4 py-2 rounded-xl shadow-lg">
+                                    <p class="text-sm font-bold text-gray-800">Growth & Success</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Enhanced Call to Action -->
+                <div class="text-center mt-16 px-6">
+                    <div class="bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 p-8 rounded-3xl shadow-2xl max-w-2xl mx-auto transform hover:scale-105 transition-all duration-300 border border-teal-300">
+                        <h3 class="text-2xl lg:text-3xl font-bold text-white mb-4">Ready to Get Started?</h3>
+                        <p class="text-white mb-6 font-medium text-lg opacity-90">Join 100+ businesses already growing with our proven process</p>
+                        <button class="bg-black text-white px-8 py-4 rounded-full font-bold hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 text-lg shadow-xl hover:shadow-2xl">
+                            Book Your Free Consultation
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+   <!-- Portfolio Section -->
+<section id="portfolio" class="py-20 bg-teal-400">
+    <div class="container mx-auto px-6 max-w-6xl">
+        <!-- Header -->
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-black mb-4">Our Portfolio</h2>
+            <p class="text-black max-w-2xl mx-auto text-lg">Explore our collection of work across various industries and media formats.</p>
+        </div>
+        
+        <!-- Portfolio Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- My Work Card -->
+            <div class="bg-white rounded-3xl p-8 shadow-xl">
+                <div class="flex justify-between items-start mb-6">
+                    <h3 class="text-lg font-bold text-gray-800 uppercase tracking-wide">MY WORK</h3>
+                    <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+                        <span class="text-gray-600 text-sm font-bold">01</span>
+                    </div>
+                </div>
+                
+                <!-- Clickable Mobile Phone Mockup -->
+                <div class="flex justify-center mb-6">
+                    <button onclick="openWorkModal()" class="block transform hover:scale-105 transition-transform duration-300 cursor-pointer group">
+                        <div class="relative">
+                            <!-- Phone Frame -->
+                            <div class="w-48 h-96 bg-black rounded-3xl p-2 shadow-2xl hover:shadow-3xl transition-shadow duration-300">
+                                <!-- Screen -->
+                                <div class="w-full h-full bg-teal-400 rounded-2xl overflow-hidden relative">
+                                    <!-- Notch -->
+                                    <div class="absolute top-2 left-1/2 transform -translate-x-1/2 w-20 h-6 bg-black rounded-full"></div>
+                                    
+                                    <!-- Screen Content -->
+                                    <div class="pt-10 px-4 h-full flex flex-col">
+                                        <!-- Instagram-like interface -->
+                                        <div class="flex items-center justify-between mb-4">
+                                            <div class="w-8 h-8 bg-black bg-opacity-20 rounded-full"></div>
+                                            <div class="flex space-x-2">
+                                                <div class="w-6 h-6 bg-black bg-opacity-20 rounded"></div>
+                                                <div class="w-6 h-6 bg-black bg-opacity-20 rounded"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Main content area -->
+                                        <div class="flex-1 bg-black bg-opacity-10 rounded-lg mb-4 flex items-center justify-center">
+                                            <img src="Images/pic1.jpg" alt="Portfolio work" class="w-full h-full object-cover rounded-lg opacity-80">
+                                        </div>
+                                        
+                                        <!-- Bottom navigation -->
+                                        <div class="flex justify-around py-2">
+                                            <div class="w-6 h-6 bg-black bg-opacity-20 rounded"></div>
+                                            <div class="w-6 h-6 bg-black bg-opacity-20 rounded"></div>
+                                            <div class="w-6 h-6 bg-black bg-opacity-20 rounded"></div>
+                                            <div class="w-6 h-6 bg-black bg-opacity-20 rounded"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Click indicator -->
+                            <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-black text-white px-3 py-1 rounded-full text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                Click to view
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Reels Kit Card -->
+            <div class="bg-white rounded-3xl p-8 shadow-xl">
+                <div class="flex justify-between items-start mb-6">
+                    <h3 class="text-lg font-bold text-gray-800 uppercase tracking-wide">REELS KIT</h3>
+                    <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+                        <span class="text-gray-600 text-sm font-bold">02</span>
+                    </div>
+                </div>
+                
+                <!-- Clickable Mobile Phone Mockup -->
+                <div class="flex justify-center mb-6">
+                    <button onclick="openReelsModal()" class="block transform hover:scale-105 transition-transform duration-300 cursor-pointer group">
+                        <div class="relative">
+                            <!-- Phone Frame -->
+                            <div class="w-48 h-96 bg-black rounded-3xl p-2 shadow-2xl hover:shadow-3xl transition-shadow duration-300">
+                                <!-- Screen -->
+                                <div class="w-full h-full bg-gray-900 rounded-2xl overflow-hidden relative">
+                                    <!-- Notch -->
+                                    <div class="absolute top-2 left-1/2 transform -translate-x-1/2 w-20 h-6 bg-black rounded-full"></div>
+                                    
+                                    <!-- Screen Content -->
+                                    <div class="pt-10 px-4 h-full flex flex-col">
+                                        <!-- Video interface -->
+                                        <div class="flex items-center justify-between mb-4">
+                                            <div class="w-8 h-8 bg-white bg-opacity-20 rounded-full"></div>
+                                            <div class="flex space-x-2">
+                                                <div class="w-6 h-6 bg-white bg-opacity-20 rounded"></div>
+                                                <div class="w-6 h-6 bg-white bg-opacity-20 rounded"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Video content area -->
+                                        <div class="flex-1 bg-teal-400 rounded-lg mb-4 flex items-center justify-center relative overflow-hidden">
+                                            <img src="Images/pic2.jpg" alt="Reels content" class="w-full h-full object-cover">
+                                            <!-- Play button overlay -->
+                                            <div class="absolute inset-0 flex items-center justify-center">
+                                                <div class="w-12 h-12 bg-white bg-opacity-80 rounded-full flex items-center justify-center">
+                                                    <div class="w-0 h-0 border-l-4 border-l-gray-800 border-t-2 border-t-transparent border-b-2 border-b-transparent ml-1"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Bottom controls -->
+                                        <div class="flex justify-around py-2">
+                                            <div class="w-6 h-6 bg-white bg-opacity-20 rounded"></div>
+                                            <div class="w-6 h-6 bg-white bg-opacity-20 rounded"></div>
+                                            <div class="w-6 h-6 bg-white bg-opacity-20 rounded"></div>
+                                            <div class="w-6 h-6 bg-white bg-opacity-20 rounded"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Click indicator -->
+                            <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-black text-white px-3 py-1 rounded-full text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                Click to view
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- My Work Gallery Modal -->
+<div class="modal fixed inset-0 z-50 flex items-center justify-center opacity-0 invisible transition duration-300" id="work-modal">
+    <div class="bg-white rounded-xl max-w-6xl w-full max-h-[90vh] overflow-auto relative m-2 sm:m-4 shadow-2xl">
+        <button onclick="closeWorkModal()" class="absolute top-2 right-2 sm:top-4 sm:right-4 text-gray-500 hover:text-gray-700 text-xl sm:text-2xl z-10 bg-white rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center shadow-lg">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="p-4 sm:p-6 lg:p-8">
+            <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800 mb-4 sm:mb-6 text-center">My Work Gallery</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
+                <div class="bg-gray-100 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                    <img src="Images/pic1.jpg" alt="Work 1" class="w-full h-48 sm:h-56 lg:h-64 object-cover">
+                    <div class="p-3 sm:p-4">
+                        <h3 class="font-bold text-gray-800 text-sm sm:text-base">Project 1</h3>
+                        <p class="text-gray-600 text-xs sm:text-sm">Brand photography and creative direction</p>
+                    </div>
+                </div>
+                <div class="bg-gray-100 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                    <img src="Images/pic2.jpg" alt="Work 2" class="w-full h-48 sm:h-56 lg:h-64 object-cover">
+                    <div class="p-3 sm:p-4">
+                        <h3 class="font-bold text-gray-800 text-sm sm:text-base">Project 2</h3>
+                        <p class="text-gray-600 text-xs sm:text-sm">Social media content creation</p>
+                    </div>
+                </div>
+                <div class="bg-gray-100 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                    <img src="Images/pic3.jpg" alt="Work 3" class="w-full h-48 sm:h-56 lg:h-64 object-cover">
+                    <div class="p-3 sm:p-4">
+                        <h3 class="font-bold text-gray-800 text-sm sm:text-base">Project 3</h3>
+                        <p class="text-gray-600 text-xs sm:text-sm">Fashion photography</p>
+                    </div>
+                </div>
+                <div class="bg-gray-100 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                    <img src="Images/pic4.jpg" alt="Work 4" class="w-full h-48 sm:h-56 lg:h-64 object-cover">
+                    <div class="p-3 sm:p-4">
+                        <h3 class="font-bold text-gray-800 text-sm sm:text-base">Project 4</h3>
+                        <p class="text-gray-600 text-xs sm:text-sm">Product photography</p>
+                    </div>
+                </div>
+                <div class="bg-gray-100 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                    <img src="Images/owner.jpg" alt="Work 5" class="w-full h-48 sm:h-56 lg:h-64 object-cover">
+                    <div class="p-3 sm:p-4">
+                        <h3 class="font-bold text-gray-800 text-sm sm:text-base">Project 5</h3>
+                        <p class="text-gray-600 text-xs sm:text-sm">Portrait photography</p>
+                    </div>
+                </div>
+                <div class="bg-gray-100 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                    <img src="Images/ABOUT.png" alt="Work 6" class="w-full h-48 sm:h-56 lg:h-64 object-cover">
+                    <div class="p-3 sm:p-4">
+                        <h3 class="font-bold text-gray-800 text-sm sm:text-base">Project 6</h3>
+                        <p class="text-gray-600 text-xs sm:text-sm">Brand design and identity</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Reels Kit Video Modal -->
+<div class="modal fixed inset-0 z-50 flex items-center justify-center opacity-0 invisible transition duration-300" id="reels-modal">
+    <div class="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-auto relative m-2 sm:m-4 shadow-2xl">
+        <button onclick="closeReelsModal()" class="absolute top-2 right-2 sm:top-4 sm:right-4 text-gray-500 hover:text-gray-700 text-xl sm:text-2xl z-10 bg-white rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center shadow-lg">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="p-4 sm:p-6 lg:p-8">
+            <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800 mb-4 sm:mb-6 text-center">Reels Kit - Video Collection</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                <div class="bg-gray-100 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                    <div class="aspect-video bg-gray-200 flex items-center justify-center relative">
+                        <img src="Images/pic2.jpg" alt="Video thumbnail" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <button class="w-12 h-12 sm:w-16 sm:h-16 bg-white bg-opacity-80 rounded-full flex items-center justify-center hover:bg-opacity-100 transition-all duration-300">
+                                <div class="w-0 h-0 border-l-6 sm:border-l-8 border-l-gray-800 border-t-3 sm:border-t-4 border-t-transparent border-b-3 sm:border-b-4 border-b-transparent ml-1"></div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-3 sm:p-4">
+                        <h3 class="font-bold text-gray-800 text-sm sm:text-base">Fashion Reel 1</h3>
+                        <p class="text-gray-600 text-xs sm:text-sm">Behind the scenes content</p>
+                    </div>
+                </div>
+                <div class="bg-gray-100 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                    <div class="aspect-video bg-gray-200 flex items-center justify-center relative">
+                        <img src="Images/pic3.jpg" alt="Video thumbnail" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <button class="w-12 h-12 sm:w-16 sm:h-16 bg-white bg-opacity-80 rounded-full flex items-center justify-center hover:bg-opacity-100 transition-all duration-300">
+                                <div class="w-0 h-0 border-l-6 sm:border-l-8 border-l-gray-800 border-t-3 sm:border-t-4 border-t-transparent border-b-3 sm:border-b-4 border-b-transparent ml-1"></div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-3 sm:p-4">
+                        <h3 class="font-bold text-gray-800 text-sm sm:text-base">Fashion Reel 2</h3>
+                        <p class="text-gray-600 text-xs sm:text-sm">Product showcase</p>
+                    </div>
+                </div>
+                <div class="bg-gray-100 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                    <div class="aspect-video bg-gray-200 flex items-center justify-center relative">
+                        <img src="Images/pic4.jpg" alt="Video thumbnail" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <button class="w-12 h-12 sm:w-16 sm:h-16 bg-white bg-opacity-80 rounded-full flex items-center justify-center hover:bg-opacity-100 transition-all duration-300">
+                                <div class="w-0 h-0 border-l-6 sm:border-l-8 border-l-gray-800 border-t-3 sm:border-t-4 border-t-transparent border-b-3 sm:border-b-4 border-b-transparent ml-1"></div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-3 sm:p-4">
+                        <h3 class="font-bold text-gray-800 text-sm sm:text-base">Fashion Reel 3</h3>
+                        <p class="text-gray-600 text-xs sm:text-sm">Style transformation</p>
+                    </div>
+                </div>
+                <div class="bg-gray-100 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                    <div class="aspect-video bg-gray-200 flex items-center justify-center relative">
+                        <img src="Images/owner.jpg" alt="Video thumbnail" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <button class="w-12 h-12 sm:w-16 sm:h-16 bg-white bg-opacity-80 rounded-full flex items-center justify-center hover:bg-opacity-100 transition-all duration-300">
+                                <div class="w-0 h-0 border-l-6 sm:border-l-8 border-l-gray-800 border-t-3 sm:border-t-4 border-t-transparent border-b-3 sm:border-b-4 border-b-transparent ml-1"></div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-3 sm:p-4">
+                        <h3 class="font-bold text-gray-800 text-sm sm:text-base">Fashion Reel 4</h3>
+                        <p class="text-gray-600 text-xs sm:text-sm">Client testimonial</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- Client Wins Section -->
+        <section id="testimonials" class="py-20 bg-gradient-to-br from-gray-50 via-white to-teal-50 relative overflow-hidden">
+            <!-- Background decorative elements -->
+            <div class="absolute top-10 left-10 w-64 h-64 bg-teal-400 rounded-full opacity-5 blur-3xl"></div>
+            <div class="absolute bottom-10 right-10 w-80 h-80 bg-gray-300 rounded-full opacity-5 blur-3xl"></div>
+            <div class="absolute top-1/2 left-1/4 w-32 h-32 bg-teal-500 rounded-full opacity-10 blur-2xl"></div>
+            
+            <div class="container mx-auto px-6 max-w-7xl relative z-10">
+                <!-- Enhanced Header -->
+                <div class="text-center mb-20">
+                    <div class="inline-block bg-gradient-to-r from-teal-400 to-teal-600 text-white px-8 py-4 transform -rotate-1 shadow-2xl mb-8 rounded-2xl">
+                        <h2 class="text-4xl md:text-5xl font-bold">Client Wins</h2>
+                    </div>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">Real results from real clients. See how we've transformed social media presence into measurable business growth.</p>
+                </div>
+                
+                <!-- Enhanced Analytics Dashboard -->
+                <div class="relative mb-16">
+                    <!-- Stylized Navigation Arrows -->
+                    <button class="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-6 bg-gradient-to-r from-teal-400 to-teal-500 text-white rounded-full p-4 shadow-2xl hover:shadow-3xl hover:scale-110 transition-all duration-300 z-20">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                    </button>
+                    
+                    <button class="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-6 bg-gradient-to-r from-teal-400 to-teal-500 text-white rounded-full p-4 shadow-2xl hover:shadow-3xl hover:scale-110 transition-all duration-300 z-20">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                    
+                    <!-- Enhanced Analytics Cards Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-16">
+                        <!-- Card 1: Accounts Reached -->
+                        <div class="bg-white rounded-3xl shadow-2xl p-8 border border-gray-100 hover:shadow-3xl hover:scale-105 transition-all duration-500 relative overflow-hidden group">
+                            <!-- Card decorative elements -->
+                            <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-teal-400 to-teal-500 rounded-full opacity-10 transform translate-x-6 -translate-y-6"></div>
+                            <div class="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-gray-300 to-gray-400 rounded-full opacity-10 transform -translate-x-4 translate-y-4"></div>
+                            
+                            <div class="relative z-10">
+                                <div class="mb-6">
+                                    <div class="bg-gradient-to-r from-teal-400 to-teal-500 text-white px-4 py-2 rounded-xl text-sm font-bold inline-block mb-4 shadow-lg">OVERVIEW</div>
+                                    <p class="text-sm text-gray-600 leading-relaxed">You reached <span class="font-bold text-teal-600 bg-teal-50 px-2 py-1 rounded-lg">+4,196%</span> more accounts compared to May 26 - Aug 23</p>
+                                </div>
+                                
+                                <div class="space-y-4">
+                                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors duration-300">
+                                        <span class="text-sm font-medium text-gray-700">Accounts reached</span>
+                                        <div class="text-right">
+                                            <div class="text-2xl font-bold text-gray-800">5.2M</div>
+                                            <div class="text-xs font-semibold text-teal-600 bg-teal-50 px-2 py-1 rounded-full">+4,196%</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors duration-300">
+                                        <span class="text-sm font-medium text-gray-700">Accounts engaged</span>
+                                        <div class="text-right">
+                                            <div class="text-2xl font-bold text-gray-800">281K</div>
+                                            <div class="text-xs font-semibold text-teal-600 bg-teal-50 px-2 py-1 rounded-full">+6,228%</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors duration-300">
+                                        <span class="text-sm font-medium text-gray-700">Total followers</span>
+                                        <div class="text-right">
+                                            <div class="text-2xl font-bold text-gray-800">107K</div>
+                                            <div class="text-xs font-semibold text-teal-600 bg-teal-50 px-2 py-1 rounded-full">+693%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Card 2: Followers Growth -->
+                        <div class="bg-white rounded-3xl shadow-2xl p-8 border border-gray-100 hover:shadow-3xl hover:scale-105 transition-all duration-500 relative overflow-hidden group">
+                            <!-- Card decorative elements -->
+                            <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-teal-400 to-teal-500 rounded-full opacity-10 transform translate-x-6 -translate-y-6"></div>
+                            <div class="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-gray-300 to-gray-400 rounded-full opacity-10 transform -translate-x-4 translate-y-4"></div>
+                            
+                            <div class="relative z-10">
+                                <div class="mb-6">
+                                    <div class="bg-gradient-to-r from-teal-400 to-teal-500 text-white px-4 py-2 rounded-xl text-sm font-bold inline-block mb-4 shadow-lg">OVERVIEW</div>
+                                    <p class="text-sm text-gray-600 leading-relaxed">You reached <span class="font-bold text-teal-600 bg-teal-50 px-2 py-1 rounded-lg">+3,326%</span> more accounts compared to Jul 31 - Aug 31</p>
+                                </div>
+                                
+                                <div class="space-y-4">
+                                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors duration-300">
+                                        <span class="text-sm font-medium text-gray-700">Accounts reached</span>
+                                        <div class="text-right">
+                                            <div class="text-2xl font-bold text-gray-800">3.3M</div>
+                                            <div class="text-xs font-semibold text-teal-600 bg-teal-50 px-2 py-1 rounded-full">+3,326%</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors duration-300">
+                                        <span class="text-sm font-medium text-gray-700">Accounts engaged</span>
+                                        <div class="text-right">
+                                            <div class="text-2xl font-bold text-gray-800">184K</div>
+                                            <div class="text-xs font-semibold text-teal-600 bg-teal-50 px-2 py-1 rounded-full">+1,394%</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors duration-300">
+                                        <span class="text-sm font-medium text-gray-700">Total followers</span>
+                                        <div class="text-right">
+                                            <div class="text-2xl font-bold text-gray-800">84.2K</div>
+                                            <div class="text-xs font-semibold text-teal-600 bg-teal-50 px-2 py-1 rounded-full">+298%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Card 3: Video Views -->
+                        <div class="bg-white rounded-3xl shadow-2xl p-8 border border-gray-100 hover:shadow-3xl hover:scale-105 transition-all duration-500 relative overflow-hidden group">
+                            <!-- Card decorative elements -->
+                            <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-teal-400 to-teal-500 rounded-full opacity-10 transform translate-x-6 -translate-y-6"></div>
+                            <div class="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-gray-300 to-gray-400 rounded-full opacity-10 transform -translate-x-4 translate-y-4"></div>
+                            
+                            <div class="relative z-10">
+                                <div class="mb-6">
+                                    <div class="flex space-x-3 mb-6">
+                                        <div class="bg-gradient-to-r from-teal-400 to-teal-500 text-white px-4 py-2 rounded-xl text-sm font-bold shadow-lg">Video views</div>
+                                        <div class="bg-gray-200 text-gray-700 px-4 py-2 rounded-xl text-sm font-medium hover:bg-gray-300 transition-colors duration-300">Profile views</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="text-center mb-6">
+                                    <div class="text-4xl font-bold text-gray-800 mb-2">40,203</div>
+                                    <div class="text-sm font-semibold text-teal-600 bg-teal-50 px-3 py-2 rounded-xl inline-block">+36,017 (+860.42%)</div>
+                                </div>
+                                
+                                <div class="bg-gradient-to-r from-teal-400 to-teal-500 text-white p-6 rounded-2xl shadow-xl transform hover:scale-105 transition-all duration-300">
+                                    <div class="text-3xl font-bold mb-1">3,066,239</div>
+                                    <div class="text-sm opacity-90 font-medium">+2,664,885 (+663.9%)</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Card 4: Additional Metrics -->
+                        <div class="bg-white rounded-3xl shadow-2xl p-8 border border-gray-100 hover:shadow-3xl hover:scale-105 transition-all duration-500 relative overflow-hidden group">
+                            <!-- Card decorative elements -->
+                            <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-teal-400 to-teal-500 rounded-full opacity-10 transform translate-x-6 -translate-y-6"></div>
+                            <div class="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-gray-300 to-gray-400 rounded-full opacity-10 transform -translate-x-4 translate-y-4"></div>
+                            
+                            <div class="relative z-10">
+                                <div class="mb-8">
+                                    <div class="bg-gradient-to-r from-teal-400 to-teal-500 text-white px-4 py-2 rounded-xl text-sm font-bold inline-block shadow-lg">Video views</div>
+                                </div>
+                                
+                                <div class="text-center">
+                                    <div class="text-4xl font-bold text-gray-800 mb-3">3,821,205</div>
+                                    <div class="text-sm font-semibold text-teal-600 bg-teal-50 px-3 py-2 rounded-xl inline-block">+221,196 (+6.15%)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Enhanced Achievement Highlights -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="text-center p-8 bg-gradient-to-br from-white to-gray-50 rounded-3xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-500 border border-gray-100 relative overflow-hidden group">
+                        <!-- Decorative elements -->
+                        <div class="absolute top-0 right-0 w-16 h-16 bg-teal-400 rounded-full opacity-10 transform translate-x-4 -translate-y-4"></div>
+                        <div class="absolute bottom-0 left-0 w-12 h-12 bg-gray-300 rounded-full opacity-10 transform -translate-x-3 translate-y-3"></div>
+                        
+                        <div class="relative z-10">
+                            <div class="text-4xl mb-4">🎯</div>
+                            <div class="text-3xl font-bold text-gray-800 mb-2">5.2 Million</div>
+                            <div class="text-lg text-gray-600 font-medium">Accounts Reached</div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center p-8 bg-gradient-to-br from-white to-gray-50 rounded-3xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-500 border border-gray-100 relative overflow-hidden group">
+                        <!-- Decorative elements -->
+                        <div class="absolute top-0 right-0 w-16 h-16 bg-teal-400 rounded-full opacity-10 transform translate-x-4 -translate-y-4"></div>
+                        <div class="absolute bottom-0 left-0 w-12 h-12 bg-gray-300 rounded-full opacity-10 transform -translate-x-3 translate-y-3"></div>
+                        
+                        <div class="relative z-10">
+                            <div class="text-4xl mb-4">📈</div>
+                            <div class="text-3xl font-bold text-gray-800 mb-2">298%</div>
+                            <div class="text-lg text-gray-600 font-medium">Followers Increased</div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center p-8 bg-gradient-to-br from-white to-gray-50 rounded-3xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-500 border border-gray-100 relative overflow-hidden group">
+                        <!-- Decorative elements -->
+                        <div class="absolute top-0 right-0 w-16 h-16 bg-teal-400 rounded-full opacity-10 transform translate-x-4 -translate-y-4"></div>
+                        <div class="absolute bottom-0 left-0 w-12 h-12 bg-gray-300 rounded-full opacity-10 transform -translate-x-3 translate-y-3"></div>
+                        
+                        <div class="relative z-10">
+                            <div class="text-4xl mb-4">🎬</div>
+                            <div class="text-3xl font-bold text-gray-800 mb-2">3M</div>
+                            <div class="text-lg text-gray-600 font-medium">Video Views Gained</div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center p-8 bg-gradient-to-br from-white to-gray-50 rounded-3xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-500 border border-gray-100 relative overflow-hidden group">
+                        <!-- Decorative elements -->
+                        <div class="absolute top-0 right-0 w-16 h-16 bg-teal-400 rounded-full opacity-10 transform translate-x-4 -translate-y-4"></div>
+                        <div class="absolute bottom-0 left-0 w-12 h-12 bg-gray-300 rounded-full opacity-10 transform -translate-x-3 translate-y-3"></div>
+                        
+                        <div class="relative z-10">
+                            <div class="text-4xl mb-4">🚀</div>
+                            <div class="text-3xl font-bold text-gray-800 mb-2">3.8 Million</div>
+                            <div class="text-lg text-gray-600 font-medium">Views Achieved</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Call to Action -->
+                <div class="text-center mt-20">
+                    <div class="bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 p-10 rounded-3xl shadow-2xl max-w-4xl mx-auto transform hover:scale-105 transition-all duration-300 border border-teal-300 relative overflow-hidden">
+                        <!-- Background decorative elements -->
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-white bg-opacity-10 rounded-full transform translate-x-8 -translate-y-8"></div>
+                        <div class="absolute bottom-0 left-0 w-24 h-24 bg-black bg-opacity-10 rounded-full transform -translate-x-6 translate-y-6"></div>
+                        
+                        <div class="relative z-10">
+                            <h3 class="text-3xl lg:text-4xl font-bold text-white mb-6">Ready to See Similar Results?</h3>
+                            <p class="text-xl text-white opacity-90 mb-8 max-w-2xl mx-auto">Join our successful clients and transform your social media presence into measurable business growth.</p>
+                            <button class="bg-white text-teal-600 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105">
+                                Get Your Free Strategy Call
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+  <!-- FAQ Section -->
+<section class="py-20 bg-gradient-to-br from-teal-50 via-white to-teal-100 relative overflow-hidden">
+    <!-- Background decorative elements -->
+    <div class="absolute top-10 left-10 w-64 h-64 bg-teal-400 rounded-full opacity-10 blur-3xl"></div>
+    <div class="absolute bottom-10 right-10 w-80 h-80 bg-teal-500 rounded-full opacity-10 blur-3xl"></div>
+    
+    <div class="container mx-auto px-6 relative z-10">
+        <!-- Clean Header -->
+        <div class="text-left mb-16 max-w-4xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-teal-600 mb-8">FAQs</h2>
+        </div>
+        
+        <div class="max-w-4xl mx-auto">
+            <!-- FAQ Item 1 -->
+            <div class="accordion mb-4 bg-white rounded-none border-b border-teal-200 overflow-hidden hover:bg-teal-50 transition-all duration-300">
+                <button class="accordion-btn flex justify-between items-center w-full text-left focus:outline-none py-8 px-0 hover:bg-transparent transition-colors duration-300">
+                    <h3 class="text-xl font-medium text-teal-600 pr-4">Do you provide content creation services?</h3>
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-plus accordion-icon text-teal-600 text-xl transition-transform duration-300"></i>
+                    </div>
+                </button>
+                <div class="accordion-content px-0 text-gray-700 leading-relaxed">
+                    <div>
+                        <p>Yes! We provide comprehensive content creation services including photography, videography, graphic design, and copywriting. Our team handles everything from concept development to final delivery, ensuring your brand maintains a consistent and professional presence across all platforms.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ Item 2 -->
+            <div class="accordion mb-4 bg-white rounded-none border-b border-teal-200 overflow-hidden hover:bg-teal-50 transition-all duration-300">
+                <button class="accordion-btn flex justify-between items-center w-full text-left focus:outline-none py-8 px-0 hover:bg-transparent transition-colors duration-300">
+                    <h3 class="text-xl font-medium text-teal-600 pr-4">What platforms do you manage?</h3>
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-plus accordion-icon text-teal-600 text-xl transition-transform duration-300"></i>
+                    </div>
+                </button>
+                <div class="accordion-content px-0 text-gray-700 leading-relaxed">
+                    <div>
+                        <p>We manage all major social media platforms including Instagram, Facebook, TikTok, LinkedIn, Twitter, and YouTube. Our team specializes in platform-specific content strategies to maximize engagement and reach on each channel, ensuring your brand message resonates with the right audience.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ Item 3 -->
+            <div class="accordion mb-4 bg-white rounded-none border-b border-teal-200 overflow-hidden hover:bg-teal-50 transition-all duration-300">
+                <button class="accordion-btn flex justify-between items-center w-full text-left focus:outline-none py-8 px-0 hover:bg-transparent transition-colors duration-300">
+                    <h3 class="text-xl font-medium text-teal-600 pr-4">What is your process?</h3>
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-plus accordion-icon text-teal-600 text-xl transition-transform duration-300"></i>
+                    </div>
+                </button>
+                <div class="accordion-content px-0 text-gray-700 leading-relaxed">
+                    <div>
+                        <p>Our process begins with a comprehensive brand audit and strategy session. We then develop a custom content calendar, create engaging content, manage posting schedules, engage with your community, and provide detailed monthly analytics reports to track growth and optimize performance.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ Item 4 -->
+            <div class="accordion mb-4 bg-white rounded-none border-b border-teal-200 overflow-hidden hover:bg-teal-50 transition-all duration-300">
+                <button class="accordion-btn flex justify-between items-center w-full text-left focus:outline-none py-8 px-0 hover:bg-transparent transition-colors duration-300">
+                    <h3 class="text-xl font-medium text-teal-600 pr-4">When can I start?</h3>
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-plus accordion-icon text-teal-600 text-xl transition-transform duration-300"></i>
+                    </div>
+                </button>
+                <div class="accordion-content px-0 text-gray-700 leading-relaxed">
+                    <div>
+                        <p>We can typically start within 1-2 weeks of our initial consultation. This allows time for strategy development, content planning, and account setup. For urgent projects, we offer expedited onboarding to get your social media presence up and running faster.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gradient-to-br from-teal-600 via-teal-700 to-teal-800 text-white relative overflow-hidden">
+        <!-- Background decorative elements -->
+        <div class="absolute top-10 left-10 w-64 h-64 bg-white rounded-full opacity-5 blur-3xl"></div>
+        <div class="absolute bottom-10 right-10 w-80 h-80 bg-teal-400 rounded-full opacity-10 blur-3xl"></div>
+        <div class="absolute top-1/2 left-1/4 w-32 h-32 bg-white rounded-full opacity-5 blur-2xl"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <!-- Enhanced Header -->
+            <div class="text-center mb-20">
+                <div class="inline-block bg-white text-teal-600 px-8 py-4 transform -rotate-1 shadow-2xl mb-8 rounded-2xl">
+                    <h2 class="text-3xl md:text-4xl font-bold">Let's Connect & Grow Together</h2>
+                </div>
+                <p class="text-center text-teal-100 max-w-3xl mx-auto mb-8 text-xl leading-relaxed">Ready to transform your social media presence? Connect with us on your favorite platform and let's start building your success story.</p>
+            </div>
+            
+            <!-- Social Media Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                <!-- Instagram Card -->
+                <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-3xl p-8 text-center hover:bg-opacity-20 hover:scale-105 transition-all duration-500 border border-white border-opacity-20 shadow-2xl group">
+                    <div class="bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-xl">
+                        <i class="fab fa-instagram text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Instagram</h3>
+                    <p class="text-teal-100 mb-6 leading-relaxed">Follow our latest work, behind-the-scenes content, and client success stories.</p>
+                    <a href="#" class="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-2xl font-bold hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                        Follow Us
+                    </a>
+                    <div class="mt-4 text-sm text-teal-200">
+                        <span class="font-semibold">@wesolmedia</span>
+                    </div>
+                </div>
+                
+                <!-- Facebook Card -->
+                <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-3xl p-8 text-center hover:bg-opacity-20 hover:scale-105 transition-all duration-500 border border-white border-opacity-20 shadow-2xl group">
+                    <div class="bg-gradient-to-br from-blue-500 to-blue-700 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-xl">
+                        <i class="fab fa-facebook-f text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Facebook</h3>
+                    <p class="text-teal-100 mb-6 leading-relaxed">Join our community for tips, insights, and exclusive content about social media growth.</p>
+                    <a href="#" class="inline-block bg-gradient-to-r from-blue-500 to-blue-700 text-white px-6 py-3 rounded-2xl font-bold hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                        Like Page
+                    </a>
+                    <div class="mt-4 text-sm text-teal-200">
+                        <span class="font-semibold">Wesol Media</span>
+                    </div>
+                </div>
+                
+                <!-- TikTok Card -->
+                <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-3xl p-8 text-center hover:bg-opacity-20 hover:scale-105 transition-all duration-500 border border-white border-opacity-20 shadow-2xl group">
+                    <div class="bg-gradient-to-br from-gray-800 to-black w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-xl">
+                        <i class="fab fa-tiktok text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">TikTok</h3>
+                    <p class="text-teal-100 mb-6 leading-relaxed">Watch our creative process, quick tips, and trending content strategies in action.</p>
+                    <a href="#" class="inline-block bg-gradient-to-r from-gray-800 to-black text-white px-6 py-3 rounded-2xl font-bold hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                        Follow
+                    </a>
+                    <div class="mt-4 text-sm text-teal-200">
+                        <span class="font-semibold">@wesolmedia</span>
+                    </div>
+                </div>
+                
+                <!-- WhatsApp Card -->
+                <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-3xl p-8 text-center hover:bg-opacity-20 hover:scale-105 transition-all duration-500 border border-white border-opacity-20 shadow-2xl group">
+                    <div class="bg-gradient-to-br from-green-400 to-green-600 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-xl">
+                        <i class="fab fa-whatsapp text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">WhatsApp</h3>
+                    <p class="text-teal-100 mb-6 leading-relaxed">Get instant support, quick consultations, and direct communication with our team.</p>
+                    <a href="#" class="inline-block bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-3 rounded-2xl font-bold hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                        Chat Now
+                    </a>
+                    <div class="mt-4 text-sm text-teal-200">
+                        <span class="font-semibold">+1 (555) 123-4567</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Information -->
+            <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-3xl p-10 max-w-4xl mx-auto border border-white border-opacity-20 shadow-2xl">
+                <h3 class="text-3xl font-bold mb-8 text-center">Get In Touch</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="text-center">
+                        <div class="bg-teal-500 p-4 rounded-2xl mx-auto mb-4 w-16 h-16 flex items-center justify-center shadow-xl">
+                            <i class="fas fa-envelope text-2xl text-white"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-lg">Email Us</h4>
+                        <p class="text-teal-100">hello@wesolmedia.com</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="bg-teal-500 p-4 rounded-2xl mx-auto mb-4 w-16 h-16 flex items-center justify-center shadow-xl">
+                            <i class="fas fa-phone-alt text-2xl text-white"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-lg">Call Us</h4>
+                        <p class="text-teal-100">+1 (555) 123-4567</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="bg-teal-500 p-4 rounded-2xl mx-auto mb-4 w-16 h-16 flex items-center justify-center shadow-xl">
+                            <i class="fas fa-map-marker-alt text-2xl text-white"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-lg">Visit Us</h4>
+                        <p class="text-teal-100">San Francisco, CA</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="bg-teal-500 p-4 rounded-2xl mx-auto mb-4 w-16 h-16 flex items-center justify-center shadow-xl">
+                            <i class="fas fa-clock text-2xl text-white"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-lg">Hours</h4>
+                        <p class="text-teal-100">Mon-Fri: 9AM-6PM</p>
+                    </div>
+                </div>
+                
+                <!-- Call to Action -->
+                <div class="text-center mt-10">
+                    <a href="#" class="inline-block bg-white text-teal-600 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105">
+                        Book Your Free Strategy Call
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-br from-teal-800 via-teal-900 to-gray-900 text-white py-16 relative overflow-hidden">
+        <!-- Background decorative elements -->
+        <div class="absolute top-0 left-0 w-64 h-64 bg-teal-400 rounded-full opacity-5 blur-3xl"></div>
+        <div class="absolute bottom-0 right-0 w-80 h-80 bg-white rounded-full opacity-5 blur-3xl"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Brand Section -->
+                <div class="lg:col-span-2">
+                    <div class="mb-6">
+                        <a href="#home" class="text-3xl font-bold logo-text bg-gradient-to-r from-teal-400 to-white bg-clip-text text-transparent">
+                            WESOL <span class="text-teal-400">media.</span>
+                        </a>
+                        <p class="mt-4 text-teal-200 text-lg leading-relaxed max-w-md">Transforming brands through strategic social media management and creative content that drives real business growth.</p>
+                    </div>
+                    
+                    <!-- Social Media Links -->
+                    <div class="mb-8">
+                        <h4 class="font-bold mb-4 text-xl">Follow Our Journey</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-gradient-to-br from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl">
+                                <i class="fab fa-instagram text-lg"></i>
+                            </a>
+                            <a href="#" class="bg-gradient-to-br from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl">
+                                <i class="fab fa-facebook-f text-lg"></i>
+                            </a>
+                            <a href="#" class="bg-gradient-to-br from-gray-800 to-black hover:from-gray-700 hover:to-gray-900 w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl">
+                                <i class="fab fa-tiktok text-lg"></i>
+                            </a>
+                            <a href="#" class="bg-gradient-to-br from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl">
+                                <i class="fab fa-whatsapp text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-bold mb-6 text-xl text-teal-400">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-teal-200 hover:text-white transition duration-300 flex items-center group">
+                            <i class="fas fa-chevron-right text-xs mr-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+                            Home
+                        </a></li>
+                        <li><a href="#about" class="text-teal-200 hover:text-white transition duration-300 flex items-center group">
+                            <i class="fas fa-chevron-right text-xs mr-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+                            About
+                        </a></li>
+                        <li><a href="#services" class="text-teal-200 hover:text-white transition duration-300 flex items-center group">
+                            <i class="fas fa-chevron-right text-xs mr-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+                            Services
+                        </a></li>
+                        <li><a href="#portfolio" class="text-teal-200 hover:text-white transition duration-300 flex items-center group">
+                            <i class="fas fa-chevron-right text-xs mr-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+                            Portfolio
+                        </a></li>
+                        <li><a href="#testimonials" class="text-teal-200 hover:text-white transition duration-300 flex items-center group">
+                            <i class="fas fa-chevron-right text-xs mr-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+                            Client Wins
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div>
+                    <h4 class="font-bold mb-6 text-xl text-teal-400">Our Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-teal-200 hover:text-white transition duration-300 flex items-center group">
+                            <i class="fas fa-chevron-right text-xs mr-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+                            Social Media Management
+                        </a></li>
+                        <li><a href="#" class="text-teal-200 hover:text-white transition duration-300 flex items-center group">
+                            <i class="fas fa-chevron-right text-xs mr-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+                            Content Creation
+                        </a></li>
+                        <li><a href="#" class="text-teal-200 hover:text-white transition duration-300 flex items-center group">
+                            <i class="fas fa-chevron-right text-xs mr-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+                            Brand Photography
+                        </a></li>
+                        <li><a href="#" class="text-teal-200 hover:text-white transition duration-300 flex items-center group">
+                            <i class="fas fa-chevron-right text-xs mr-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+                            Digital Strategy
+                        </a></li>
+                        <li><a href="#" class="text-teal-200 hover:text-white transition duration-300 flex items-center group">
+                            <i class="fas fa-chevron-right text-xs mr-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+                            Analytics & Reporting
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Newsletter Signup -->
+            <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-3xl p-8 mb-12 border border-white border-opacity-20">
+                <div class="text-center">
+                    <h4 class="text-2xl font-bold mb-4">Stay Updated with Social Media Trends</h4>
+                    <p class="text-teal-200 mb-6 max-w-2xl mx-auto">Get weekly insights, tips, and strategies delivered to your inbox. Join 5,000+ business owners growing their social presence.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                        <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 rounded-2xl bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-teal-200 focus:outline-none focus:ring-2 focus:ring-teal-400">
+                        <button class="bg-gradient-to-r from-teal-400 to-teal-500 text-white px-6 py-3 rounded-2xl font-bold hover:from-teal-500 hover:to-teal-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                            Subscribe
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bottom Footer -->
+            <div class="border-t border-teal-700 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-teal-300">© 2024 Wesol Media. All rights reserved.</p>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-6 text-sm">
+                    <a href="#" class="text-teal-300 hover:text-white transition duration-300">Privacy Policy</a>
+                    <a href="#" class="text-teal-300 hover:text-white transition duration-300">Terms of Service</a>
+                    <a href="#" class="text-teal-300 hover:text-white transition duration-300">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal fixed inset-0 bg-black/80 z-50 flex items-center justify-center opacity-0 invisible transition duration-300" id="portfolio-modal">
+        <div class="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-auto relative m-4">
+            <button class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl" id="close-modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="p-8">
+                <div class="flex flex-col lg:flex-row gap-8">
+                    <div class="lg:w-1/2">
+                        <img id="modal-image" src="" alt="" class="w-full h-auto rounded-lg">
+                        <div id="modal-video" class="hidden w-full aspect-video rounded-lg overflow-hidden mt-4">
+                            <iframe id="video-iframe" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2">
+                        <h2 id="modal-title" class="text-2xl font-bold text-blue-800 mb-2"></h2>
+                        <p id="modal-desc" class="text-gray-600 mb-6"></p>
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <h3 class="font-bold text-blue-800 mb-2">Project Details</h3>
+                            <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                <li>Client: Brand Name</li>
+                                <li>Location: San Francisco, CA</li>
+                                <li>Date: June 2023</li>
+                                <li>Services: Photography, Creative Direction</li>
+                            </ul>
+                        </div>
+                        <a href="#contact" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-medium mt-6 transition duration-300">Start Your Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal fixed inset-0 bg-black/80 z-50 flex items-center justify-center opacity-0 invisible transition duration-300" id="success-modal">
+        <div class="bg-white rounded-xl max-w-md w-full p-8 text-center">
+            <div class="bg-green-100 text-green-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-check text-2xl"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">Thank You!</h2>
+            <p class="text-gray-600 mb-6">Your message has been sent successfully. We'll get back to you within 24 hours.</p>
+            <button id="close-success-modal" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-medium transition duration-300">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Portfolio tabs
+        const photoTab = document.getElementById('photo-tab');
+        const videoTab = document.getElementById('video-tab');
+        const photoGallery = document.getElementById('photo-gallery');
+        const videoGallery = document.getElementById('video-gallery');
+        
+        if (photoTab && videoTab && photoGallery && videoGallery) {
+            photoTab.addEventListener('click', () => {
+                photoTab.classList.remove('bg-gray-200', 'text-gray-700');
+                photoTab.classList.add('bg-blue-600', 'text-white');
+                videoTab.classList.remove('bg-blue-600', 'text-white');
+                videoTab.classList.add('bg-gray-200', 'text-gray-700');
+                photoGallery.classList.remove('hidden');
+                videoGallery.classList.add('hidden');
+            });
+            
+            videoTab.addEventListener('click', () => {
+                videoTab.classList.remove('bg-gray-200', 'text-gray-700');
+                videoTab.classList.add('bg-blue-600', 'text-white');
+                photoTab.classList.remove('bg-blue-600', 'text-white');
+                photoTab.classList.add('bg-gray-200', 'text-gray-700');
+                videoGallery.classList.remove('hidden');
+                photoGallery.classList.add('hidden');
+            });
+        }
+        
+        // Accordion functionality
+        const accordions = document.querySelectorAll('.accordion');
+        
+        accordions.forEach(accordion => {
+            const btn = accordion.querySelector('.accordion-btn');
+            const content = accordion.querySelector('.accordion-content');
+            const icon = accordion.querySelector('.accordion-icon');
+            
+            // Initially hide all content
+            content.style.maxHeight = '0';
+            content.style.overflow = 'hidden';
+            content.style.transition = 'max-height 0.3s ease-out';
+            
+            btn.addEventListener('click', () => {
+                const isActive = accordion.classList.contains('active');
+                
+                // Close all other accordions
+                accordions.forEach(otherAccordion => {
+                    if (otherAccordion !== accordion) {
+                        otherAccordion.classList.remove('active');
+                        const otherContent = otherAccordion.querySelector('.accordion-content');
+                        const otherIcon = otherAccordion.querySelector('.accordion-icon');
+                        otherContent.style.maxHeight = '0';
+                        otherIcon.style.transform = 'rotate(0deg)';
+                    }
+                });
+                
+                // Toggle current accordion
+                if (isActive) {
+                    accordion.classList.remove('active');
+                    content.style.maxHeight = '0';
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    accordion.classList.add('active');
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    icon.style.transform = 'rotate(45deg)';
+                }
+            });
+        });
+        
+        // Portfolio modal
+        const viewBtns = document.querySelectorAll('.view-btn');
+        const portfolioModal = document.getElementById('portfolio-modal');
+        const modalImage = document.getElementById('modal-image');
+        const modalVideo = document.getElementById('modal-video');
+        const videoIframe = document.getElementById('video-iframe');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc');
+        const closeModal = document.getElementById('close-modal');
+        
+        viewBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const imgSrc = btn.getAttribute('data-img');
+                const videoSrc = btn.getAttribute('data-video');
+                const title = btn.getAttribute('data-title');
+                const desc = btn.getAttribute('data-desc');
+                
+                modalTitle.textContent = title;
+                modalDesc.textContent = desc;
+                
+                if (imgSrc) {
+                    modalImage.src = imgSrc;
+                    modalImage.classList.remove('hidden');
+                    modalVideo.classList.add('hidden');
+                } else if (videoSrc) {
+                    videoIframe.src = videoSrc;
+                    modalVideo.classList.remove('hidden');
+                    modalImage.classList.add('hidden');
+                }
+                
+                portfolioModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        closeModal.addEventListener('click', () => {
+            portfolioModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            videoIframe.src = '';
+        });
+        
+        // Contact form submission
+        const contactForm = document.getElementById('contact-form');
+        const successModal = document.getElementById('success-modal');
+        const closeSuccessModal = document.getElementById('close-success-modal');
+        
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Here you would typically send the form data to a server
+                // For this example, we'll just show the success modal
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Show success message
+                successModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+        
+        if (closeSuccessModal) {
+            closeSuccessModal.addEventListener('click', () => {
+                successModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        }
+        
+        // Close modals when clicking outside
+        [portfolioModal, successModal].forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                    videoIframe.src = '';
+                }
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+        
+        // Animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.animation = 'fadeIn 0.5s ease-in forwards';
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', fadeInOnScroll);
+        window.addEventListener('load', fadeInOnScroll);
+
+        // Add this to your script section
+const nav = document.querySelector('nav');
+const heroSection = document.querySelector('.hero');
+
+const handleScroll = () => {
+    const heroHeight = heroSection.offsetHeight;
+    const scrollPosition = window.scrollY;
+    
+    if (scrollPosition > heroHeight - 100) {
+        nav.classList.remove('nav-hidden');
+        nav.classList.add('nav-visible');
+    } else {
+        nav.classList.remove('nav-visible');
+        nav.classList.add('nav-hidden');
+    }
+};
+
+// Initialize on load
+window.addEventListener('load', () => {
+    nav.classList.add('nav-hidden');
+    handleScroll();
+});
+
+window.addEventListener('scroll', handleScroll);
+
+// Portfolio modal functions
+function openWorkModal() {
+    const modal = document.getElementById('work-modal');
+    modal.classList.remove('opacity-0', 'invisible');
+    modal.classList.add('opacity-100', 'visible');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeWorkModal() {
+    const modal = document.getElementById('work-modal');
+    modal.classList.add('opacity-0', 'invisible');
+    modal.classList.remove('opacity-100', 'visible');
+    document.body.style.overflow = 'auto';
+}
+
+function openReelsModal() {
+    const modal = document.getElementById('reels-modal');
+    modal.classList.remove('opacity-0', 'invisible');
+    modal.classList.add('opacity-100', 'visible');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeReelsModal() {
+    const modal = document.getElementById('reels-modal');
+    modal.classList.add('opacity-0', 'invisible');
+    modal.classList.remove('opacity-100', 'visible');
+    document.body.style.overflow = 'auto';
+}
+
+// Close modals when clicking outside
+document.getElementById('work-modal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeWorkModal();
+    }
+});
+
+document.getElementById('reels-modal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeReelsModal();
+    }
+});
+    </script>
+</body>
+</html>
