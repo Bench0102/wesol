@@ -365,6 +365,62 @@
         
         /* Mobile-specific optimizations */
             @media (max-width: 768px) {
+                .hero {
+                    min-height: 100vh !important;
+                    padding-top: 0 !important;
+                }
+                
+                .hero .container {
+                    min-height: 100vh !important;
+                    padding-top: 2rem;
+                    padding-bottom: 2rem;
+                }
+                
+                .hero h1 {
+                    font-size: 2.5rem !important;
+                    line-height: 1.1 !important;
+                }
+                
+                .hero h2 {
+                    font-size: 2rem !important;
+                    line-height: 1.2 !important;
+                }
+                
+                .hero h3 {
+                    font-size: 2.5rem !important;
+                    line-height: 1.1 !important;
+                }
+                
+                .hero .px-4 {
+                    padding-left: 1.5rem !important;
+                    padding-right: 1.5rem !important;
+                }
+                
+                .hero .py-3 {
+                    padding-top: 1rem !important;
+                    padding-bottom: 1rem !important;
+                }
+                
+                .hero .mt-6 {
+                    margin-top: 2rem !important;
+                }
+                
+                .hero .transform {
+                    transform: rotate(0deg) !important;
+                }
+                
+                .hero .-mt-2 {
+                    margin-top: -0.5rem !important;
+                }
+                
+                .hero .ml-2 {
+                    margin-left: 0.5rem !important;
+                }
+                
+                .hero .ml-1 {
+                    margin-left: 0.25rem !important;
+                }
+                
                 .hero-section {
                     min-height: 100vh;
                     height: auto;
@@ -436,16 +492,54 @@
             }
         
         @media (max-width: 480px) {
+                .hero {
+                    min-height: 100vh !important;
+                }
+                
+                .hero .container {
+                    min-height: 100vh !important;
+                    padding-left: 1rem;
+                    padding-right: 1rem;
+                    padding-top: 1.5rem;
+                    padding-bottom: 1.5rem;
+                }
+                
                 .hero h1 {
-                    font-size: 1.5rem !important;
+                    font-size: 2.25rem !important;
+                    line-height: 1.1 !important;
                 }
                 
                 .hero h2 {
-                    font-size: 1.25rem !important;
+                    font-size: 1.75rem !important;
+                    line-height: 1.2 !important;
                 }
                 
                 .hero h3 {
-                    font-size: 1.75rem !important;
+                    font-size: 2.25rem !important;
+                    line-height: 1.1 !important;
+                }
+                
+                .hero .px-4 {
+                    padding-left: 1rem !important;
+                    padding-right: 1rem !important;
+                }
+                
+                .hero .py-3 {
+                    padding-top: 0.75rem !important;
+                    padding-bottom: 0.75rem !important;
+                }
+                
+                .hero .mt-6 {
+                    margin-top: 1.5rem !important;
+                }
+                
+                .hero .px-6 {
+                    padding-left: 1.25rem !important;
+                    padding-right: 1.25rem !important;
+                }
+                
+                .hero .text-base {
+                    font-size: 1.1rem !important;
                 }
                 
                 .pricing-card {
@@ -664,8 +758,8 @@
     </nav>
 
         <!-- Hero Section -->
-        <section id="home" class="hero flex items-center justify-center pt-12 md:pt-20 relative min-h-[70vh] md:min-h-screen">
-            <div class="container mx-auto px-4 sm:px-6 min-h-[60vh] md:h-screen flex items-center">
+        <section id="home" class="hero flex items-center justify-center pt-12 md:pt-20 relative min-h-screen">
+            <div class="container mx-auto px-4 sm:px-6 min-h-screen flex items-center">
                 <!-- Background Image with Border -->
                 <div class="absolute inset-0 flex">
                     <!-- Single Image (Full Width) -->
@@ -679,28 +773,28 @@
                 </div>
                 
                 <!-- Centered Text Content Overlay -->
-                <div class="relative z-10 flex flex-col items-center justify-center w-full h-full px-2 py-4 md:py-0">
+                <div class="relative z-10 flex flex-col items-center justify-center w-full h-full px-2 py-8 md:py-0">
                     <!-- Overlapping Text Blocks like Scotch Tape -->
                     <div class="relative">
                         <!-- SOCIALS - Top layer -->
-                        <div class="px-2 sm:px-6 md:px-12 text-center py-2 sm:py-4 md:py-6 shadow-xl transform rotate-2 relative z-30" style="background-color: #D198A0;">
-                            <h1 class="text-lg sm:text-3xl md:text-6xl font-bold tracking-wider text-black">Social Media</h1>
+                        <div class="px-4 sm:px-6 md:px-12 text-center py-3 sm:py-4 md:py-6 shadow-xl transform rotate-2 relative z-30" style="background-color: #D198A0;">
+                            <h1 class="text-2xl sm:text-3xl md:text-6xl font-bold tracking-wider text-black">Social Media</h1>
                         </div>
                         
                         <!-- MADE - Middle layer, overlapping -->
-                        <div class="text-white text-center px-2 sm:px-4 md:px-6 py-2 sm:py-4 md:py-6 shadow-xl transform -rotate-1 relative z-20 -mt-1 sm:-mt-2 md:-mt-4 ml-1 sm:ml-4 md:ml-8" style="background-color: #2E2E2E;">
-                            <h2 class="text-lg sm:text-3xl md:text-5xl font-handwriting font-bold italic">MARKETING</h2>
+                        <div class="text-white text-center px-3 sm:px-4 md:px-6 py-3 sm:py-4 md:py-6 shadow-xl transform -rotate-1 relative z-20 -mt-2 sm:-mt-2 md:-mt-4 ml-2 sm:ml-4 md:ml-8" style="background-color: #2E2E2E;">
+                            <h2 class="text-xl sm:text-3xl md:text-5xl font-handwriting font-bold italic">MARKETING</h2>
                         </div>
                         
                         <!-- SIMPLE - Bottom layer, overlapping -->
-                        <div class="text-white text-center px-2 sm:px-6 md:px-12 py-2 sm:py-4 md:py-6 shadow-xl transform rotate-1 relative z-10 -mt-1 sm:-mt-2 md:-mt-4 ml-1 sm:ml-2 md:ml-4" style="background-color: #F5F0EB;">
-                            <h3 class="text-lg sm:text-4xl md:text-6xl font-bold tracking-wider text-black">MADE SIMPLE</h3>
+                        <div class="text-white text-center px-4 sm:px-6 md:px-12 py-3 sm:py-4 md:py-6 shadow-xl transform rotate-1 relative z-10 -mt-2 sm:-mt-2 md:-mt-4 ml-1 sm:ml-2 md:ml-4" style="background-color: #F5F0EB;">
+                            <h3 class="text-2xl sm:text-4xl md:text-6xl font-bold tracking-wider text-black">MADE SIMPLE</h3>
                         </div>
                     </div>
                     
                     <!-- Call to Action Button - Below the overlapping text -->
-                    <div class="mt-4 sm:mt-8 md:mt-12">
-                        <a href="#about" class="inline-block bg-white text-gray-800 px-3 sm:px-8 md:px-10 py-2 sm:py-3 md:py-4 shadow-xl font-bold text-sm sm:text-lg md:text-xl hover:bg-gray-100 transition duration-300 transform hover:scale-105">
+                    <div class="mt-6 sm:mt-8 md:mt-12">
+                        <a href="#about" class="inline-block bg-white text-gray-800 px-6 sm:px-8 md:px-10 py-3 sm:py-3 md:py-4 shadow-xl font-bold text-base sm:text-lg md:text-xl hover:bg-gray-100 transition duration-300 transform hover:scale-105 rounded-lg">
                             START HERE
                         </a>
                     </div>
@@ -819,6 +913,11 @@
         }
         
         @media (max-width: 768px) {
+            #about {
+                padding-top: 2rem !important;
+                padding-bottom: 2rem !important;
+            }
+            
             #about h2 {
                 font-size: 2rem !important;
             }
@@ -844,9 +943,18 @@
             #about .text-base {
                 font-size: 0.9rem !important;
             }
+            
+            #about .mb-6 {
+                margin-bottom: 1rem !important;
+            }
         }
         
         @media (max-width: 480px) {
+            #about {
+                padding-top: 1rem !important;
+                padding-bottom: 1rem !important;
+            }
+            
             #about .p-6 {
                 padding: 1rem !important;
             }
@@ -854,6 +962,10 @@
             #about .py-8 {
                 padding-top: 1rem !important;
                 padding-bottom: 1rem !important;
+            }
+            
+            #about .mb-6 {
+                margin-bottom: 0.5rem !important;
             }
         }
     </style>
@@ -1294,9 +1406,11 @@
                     <div class="bg-[#2E2E2E] from-teal-400 via-teal-500 to-teal-600 p-8 rounded-3xl shadow-2xl max-w-2xl mx-auto transform hover:scale-105 hover:-translate-y-1 transition-all duration-500 border border-teal-300 hover:border-teal-200 hover:shadow-3xl">
                         <h3 class="text-2xl lg:text-3xl font-bold text-white mb-4 hover:text-teal-100 transition-colors duration-300">Ready to Get Started?</h3>
                         <p class="text-white mb-6 font-medium text-lg opacity-90 hover:opacity-100 transition-opacity duration-300">Join 100+ businesses already growing with our proven process</p>
-                        <button class="bg-[#F5F0EB] text-black px-8 py-4 rounded-full font-bold hover:bg-[#D198A0] hover:text-white transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 text-lg shadow-xl hover:shadow-2xl active:scale-95">
-                            Book Your Free Consultation
-                        </button>
+                        <a href="#contact">
+                            <button class="bg-[#F5F0EB] text-black px-8 py-4 rounded-full font-bold hover:bg-[#D198A0] hover:text-white transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 text-lg shadow-xl hover:shadow-2xl active:scale-95">
+                                Book Your Free Consultation
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -1565,8 +1679,8 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                     <!-- Testimonial 1 - Haneen N -->
                     <div class="group relative">
-                        <div class="absolute inset-0 bg-gradient-to-r from-[#8B1E3F] to-[#D198A0] rounded-2xl blur-lg opacity-25 group-hover:opacity-40 transition-all duration-500 transform group-hover:scale-105"></div>
-                        <div class="relative bg-white rounded-2xl shadow-xl p-6 border-2 border-gray-100 hover:shadow-2xl hover:scale-105 transition-all duration-500 overflow-hidden h-full">
+                      <div class="absolute inset-0 bg-gradient-to-r from-[#8B1E3F] to-[#D198A0] rounded-2xl blur-lg opacity-25 group-hover:opacity-40 transition-all duration-500 transform group-hover:scale-105"></div>
+                        <div class="relative bg-white rounded-2xl shadow-xl p-6 border-2 border-gray-100 hover:shadow-2xl hover:scale-105 transition-all duration-500 overflow-hidden h-full flex flex-col">
                             <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-[#8B1E3F] to-[#D198A0] rounded-full opacity-10 transform translate-x-6 -translate-y-6"></div>
                             
                             <!-- Client Photo -->
@@ -1590,12 +1704,12 @@
                             </div>
                             
                             <!-- Testimonial Text -->
-                            <div class="text-center mb-6">
+                            <div class="text-center mb-6 flex-grow">
                                 <p class="text-gray-700 leading-relaxed text-sm mb-4">"She's truly a lifesaver! She handled my social media and created beautiful graphics. Everything was organized, which made my workload so much easier. Thanks to her, my followers grew by 15%. She's hardworking, reliable, and such a pleasure to work with!"</p>
                             </div>
                             
-                            <!-- Client Name -->
-                            <div class="text-center">
+                            <!-- Client Name - Moved to bottom -->
+                            <div class="text-center mt-auto">
                                 <h4 class="font-bold text-[#8B1E3F] text-lg">Haneen N</h4>
                             </div>
                         </div>
@@ -1604,7 +1718,7 @@
                     <!-- Testimonial 2 - Théodore N -->
                     <div class="group relative">
                         <div class="absolute inset-0 bg-gradient-to-r from-[#8B1E3F] to-[#D198A0] rounded-2xl blur-lg opacity-25 group-hover:opacity-40 transition-all duration-500 transform group-hover:scale-105"></div>
-                        <div class="relative bg-white rounded-2xl shadow-xl p-6 border-2 border-gray-100 hover:shadow-2xl hover:scale-105 transition-all duration-500 overflow-hidden h-full">
+                        <div class="relative bg-white rounded-2xl shadow-xl p-6 border-2 border-gray-100 hover:shadow-2xl hover:scale-105 transition-all duration-500 overflow-hidden h-full flex flex-col">
                             <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-[#8B1E3F] to-[#D198A0] rounded-full opacity-10 transform translate-x-6 -translate-y-6"></div>
                             
                             <!-- Client Photo -->
@@ -1628,12 +1742,12 @@
                             </div>
                             
                             <!-- Testimonial Text -->
-                            <div class="text-center mb-6">
+                            <div class="text-center mb-6 flex-grow">
                                 <p class="text-gray-700 leading-relaxed text-sm mb-4">"Great content creator"</p>
                             </div>
                             
-                            <!-- Client Name -->
-                            <div class="text-center">
+                            <!-- Client Name - Moved to bottom -->
+                            <div class="text-center mt-auto">
                                 <h4 class="font-bold text-[#8B1E3F] text-lg">Théodore N</h4>
                             </div>
                         </div>
@@ -1642,7 +1756,7 @@
                     <!-- Testimonial 3 - Ermal M -->
                     <div class="group relative">
                         <div class="absolute inset-0 bg-gradient-to-r from-[#8B1E3F] to-[#D198A0] rounded-2xl blur-lg opacity-25 group-hover:opacity-40 transition-all duration-500 transform group-hover:scale-105"></div>
-                        <div class="relative bg-white rounded-2xl shadow-xl p-6 border-2 border-gray-100 hover:shadow-2xl hover:scale-105 transition-all duration-500 overflow-hidden h-full">
+                        <div class="relative bg-white rounded-2xl shadow-xl p-6 border-2 border-gray-100 hover:shadow-2xl hover:scale-105 transition-all duration-500 overflow-hidden h-full flex flex-col">
                             <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-[#8B1E3F] to-[#D198A0] rounded-full opacity-10 transform translate-x-6 -translate-y-6"></div>
                             
                             <!-- Client Photo -->
@@ -1666,12 +1780,12 @@
                             </div>
                             
                             <!-- Testimonial Text -->
-                            <div class="text-center mb-6">
+                            <div class="text-center mb-6 flex-grow">
                                 <p class="text-gray-700 leading-relaxed text-sm mb-4">"I was a client of Wessal and I can say I would highly recommend her. She has very strong design skills and creates high-quality social media content perfect for my startup!"</p>
                             </div>
                             
-                            <!-- Client Name -->
-                            <div class="text-center">
+                            <!-- Client Name - Moved to bottom -->
+                            <div class="text-center mt-auto">
                                 <h4 class="font-bold text-[#8B1E3F] text-lg">Ermal M</h4>
                             </div>
                         </div>
@@ -2020,78 +2134,13 @@
                 </h2>
             </div>
             
-            <!-- Contact Form -->
+            <!-- Google Forms Iframe -->
             <div class="max-w-3xl mx-auto">
-                <form id="contactForm" class="bg-white rounded-3xl p-10 shadow-2xl">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                        <!-- Name Field -->
-                        <div>
-                            <label for="name" class="block text-black font-medium mb-2">Name</label>
-                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-xl bg-white bg-opacity-20 border border-black border-opacity-30 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300" placeholder="Your name">
-                        </div>
-                        
-                        <!-- Email Field -->
-                        <div>
-                            <label for="email" class="block text-black font-medium mb-2">Email</label>
-                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-xl bg-white bg-opacity-20 border border-black border-opacity-30 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300" placeholder="your@email.com">
-                        </div>
-                    </div>
-                    
-                    <!-- Location Field -->
-                    <div class="mb-6">
-                        <label for="location" class="block text-black font-medium mb-2">Where are you based?</label>
-                        <input type="text" id="location" name="location" required class="w-full px-4 py-3 rounded-xl bg-white bg-opacity-20 border border-black border-opacity-30 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300" placeholder="City, Country">
-                    </div>
-                    
-                    <!-- Business Field -->
-                    <div class="mb-6">
-                        <label for="business" class="block text-black font-medium mb-2">What's your business about?</label>
-                        <textarea id="business" name="business" required rows="3" class="w-full px-4 py-3 rounded-xl bg-white bg-opacity-20 border border-black border-opacity-30 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300 resize-none" placeholder="Tell us about your business..."></textarea>
-                    </div>
-                    
-                    <!-- Help Field -->
-                    <div class="mb-6">
-                        <label for="help" class="block text-black font-medium mb-2">What do you need help with?</label>
-                        <textarea id="help" name="help" required rows="3" class="w-full px-4 py-3 rounded-xl bg-white bg-opacity-20 border border-black border-opacity-30 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300 resize-none" placeholder="Describe what you need help with..."></textarea>
-                    </div>
-                    
-                    <!-- Optional Message Field -->
-                    <div class="mb-8">
-                        <label for="message" class="block text-black font-medium mb-2">Anything else you'd like to share? (optional)</label>
-                        <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-xl bg-white bg-opacity-20 border border-black border-opacity-30 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300 resize-none" placeholder="Any additional information..."></textarea>
-                    </div>
-                    
-                    <!-- Submit Button -->
-                    <div class="text-center">
-                        <button type="submit" class="text-white px-12 py-4 rounded-2xl font-bold text-lg hover:opacity-90 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50" style="background-color: #8B1E3F;">
-                            Send Message
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        
-        <!-- Success Popup Modal -->
-        <div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-            <div class="bg-white rounded-3xl p-8 max-w-md mx-4 text-center shadow-2xl transform scale-95 transition-all duration-300">
-                <div class="mb-6">
-                    <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-check text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Thanks!</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        I got your message and will get back to you within 1–2 business days.
-                    </p>
+                <div class="bg-white rounded-3xl p-10 shadow-2xl">
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdSnZcmzL0j1zjIOdZfoON_nlwl9p9mSSkL-j2FE50e_J_6eQ/viewform?embedded=true" width="100%" height="1088" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
                 </div>
-                <button onclick="closeModal()" class="text-white px-8 py-3 rounded-xl font-medium hover:opacity-90 transition-colors duration-300" style="background-color: #8B1E3F;">
-                    Close
-                </button>
             </div>
         </div>
-        
-        <script>
-        // Contact form functionality is now handled in the main DOMContentLoaded event listener above
-        </script>
     </section>
 
     <!-- Footer -->
